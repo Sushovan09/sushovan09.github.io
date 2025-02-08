@@ -1,0 +1,481 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body & Background */
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(30, 30, 30, 0.85)),
+    url('def.jpg') no-repeat center center;
+  background-size: cover;
+  line-height: 1.6;
+}
+
+/* Container */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* Navigation */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.nav-logo {
+  font-family: 'Fira Code', monospace;
+  font-size: 1.8em;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Nav Menu */
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-menu li a {
+  text-decoration: none;
+  font-family: 'Fira Code', monospace;
+  font-weight: 500;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.nav-menu li a:hover {
+  color: #fff;
+}
+
+/* Hamburger Menu for Mobile */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background: #fff;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+/* Glass Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 40px;
+  margin: 40px auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Scroll Animation */
+.scroll-animation {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animation.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Header Section */
+.header-section {
+  padding: 80px 0 40px;
+  text-align: left;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* Centering and spacing */
+.profile {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px; /* Keeps space below the profile */
+}
+
+/* Profile container with position relative for absolute positioning */
+.profile-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Profile image */
+.profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  z-index: 1; /* Ensures the image stays above the border */
+}
+
+/* Expanding white border */
+.profile-border {
+  position: absolute;
+  width: 158px; /* Slightly larger than image */
+  height: 158px;
+  border-radius: 50%;
+  border: 4px solid white;
+  transition: transform 0.3s ease, border-width 0.3s ease;
+  z-index: 0;
+}
+
+/* Hover effect - only expands the border */
+.profile-container:hover .profile-border {
+  transform: scale(1.2); /* Expands outward without affecting layout */
+  border-width: 8px;
+}
+
+
+
+.intro-text {
+  flex: 1;
+}
+
+.intro-text h1 {
+  font-family: 'Fira Code', monospace;
+  font-size: 2.8em;
+  margin-bottom: 10px;
+}
+
+.tagline {
+  font-size: 1.2em;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+/* Social Links */
+.social-links a {
+  margin-right: 15px;
+  text-decoration: none;
+  font-family: 'Fira Code', monospace;
+  font-weight: 500;
+  color: #6c63ff;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: #ffdd57;
+}
+
+/* Scroll Down Indicator */
+.scroll-down {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 2em;
+  animation: bounce 2s infinite;
+  color: #fff;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Two-Column Layout */
+.two-col {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.two-col .text-col {
+  flex: 1;
+  text-align: left;
+}
+
+.two-col .img-col {
+  flex: 1;
+  text-align: center;
+}
+
+/* Right-Aligned Sections */
+.right-align .two-col {
+  flex-direction: row-reverse;
+}
+
+.right-align .two-col .text-col {
+  text-align: left;
+}
+
+/* Section Headings */
+.glass-card h2 {
+  font-family: 'Fira Code', monospace;
+  font-size: 2em;
+  margin-bottom: 20px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+/* Paragraphs */
+.glass-card p {
+  font-size: 1.1em;
+  color: #ddd;
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 20px;
+}
+
+.project-info h3 {
+  font-family: 'Fira Code', monospace;
+  font-size: 1.6em;
+  margin-bottom: 10px;
+}
+
+.project-info p {
+  font-size: 1em;
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: linear-gradient(45deg, #6c63ff, #4e4e9c);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 25px;
+  font-family: 'Fira Code', monospace;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+  background: linear-gradient(45deg, #4e4e9c, #6c63ff);
+  transform: scale(1.03);
+}
+
+/* Download CV Button */
+.download-cv {
+  font-size: 1.2em;
+  padding: 15px 40px;
+  margin: 20px auto;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+.download-cv::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+}
+
+.download-cv:hover::after {
+  left: 100%;
+}
+
+/* Send Mail Button */
+.send-mail-btn {
+  background: linear-gradient(45deg, #28a745, #218838);
+}
+
+.send-mail-btn:hover {
+  background: linear-gradient(45deg, #218838, #28a745);
+  transform: scale(1.03);
+}
+
+/* Contact Form */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #6c63ff;
+}
+
+.contact-form button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  background: #6c63ff;
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.3s;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background: #4e4e9c;
+  transform: scale(1.02);
+}
+
+/* Footer Section */
+#footer {
+  text-align: center;
+  padding: 40px 0;
+}
+
+/* Technical Skills List */
+.tech-list {
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .profile {
+    margin-bottom: 20px;
+  }
+  .intro-text h1 {
+    font-size: 2.4em;
+  }
+  .two-col {
+    flex-direction: column;
+    text-align: center;
+  }
+  .right-align .two-col {
+    flex-direction: column;
+  }
+
+  
+  
+  /* Mobile Navigation */
+  .nav-menu {
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    display: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .nav-menu.active {
+    display: flex;
+  }
+  .nav-menu li {
+    padding: 10px 20px;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
+
+.section-gif{
+
+    width: 250px;
+    height: auto; /* or adjust as needed */
+}
+.social-icon{
+
+    width: 100px;
+    height: auto; /* or adjust as needed */
+}
+
+section {
+  scroll-margin-top: 80px;
+}
+
+
+
