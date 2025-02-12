@@ -35,16 +35,6 @@
             color: white;
             z-index: 2;
         }
-        .content h1 {
-            font-size: 1.8rem;
-            font-weight: 400;
-            animation: fadeIn 2s ease-in-out;
-        }
-        .content p {
-            font-size: 1.0rem;
-            font-weight:300;
-            animation: fadeIn 3s ease-in-out;
-        }
         .loader {
             margin: 15px auto;
             width: 60px;
@@ -67,30 +57,33 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
     </style>
 </head>
 <body>
     <div class="overlay"></div>
     <div class="content">
-        <!--<h1>Welcome to My Interactive Portfolio</h1>
-        <p>Get ready to be amazed...</p>-->
         <div class="loader">
             <div></div>
             <div></div>
         </div>
     </div>
+    <!-- Hidden iframe to preload the portfolio page -->
+    <iframe id="preload-iframe" src="portfolio.html" style="display: none;"></iframe>
     <script>
+        // Check if the user has visited before
         if (sessionStorage.getItem("visited")) {
-            window.location.replace('portfolio.html'); // Prevents going back to index.html
+            window.location.replace('portfolio.html'); // Skip loader if already visited
         } else {
-            sessionStorage.setItem("visited", true);
-            setTimeout(function() {
-                window.location.replace('portfolio.html');
-            }, 700); // Redirect after .7 seconds on first visit
+            sessionStorage.setItem("visited", true); // Set the session flag
+            const iframe = document.getElementById("preload-iframe");
+
+            // Wait until the iframe (portfolio.html) is fully loaded
+            iframe.onload = function() {
+                // Show the portfolio page after the animation
+                setTimeout(function() {
+                    window.location.replace('portfolio.html');
+                }, 700); // Duration of the loading animation
+            };
         }
     </script>
 </body>
