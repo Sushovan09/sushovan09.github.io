@@ -1,3 +1,5 @@
+
+
 /* -----------------------------------
   Reset & Basic Setup
 ----------------------------------- */
@@ -632,5 +634,36 @@ body {
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
 }
 
+
+
+/* Remove or comment out wave <svg> if you don't want them overshadowing the background */
+/* .wave, .wave-reverse {
+  display: none;
+} */
+
+/* Make sections transparent or partially transparent so bubbles show through */
+.section-light {
+  background: rgba(255, 255, 255, 0.8); /* was #fdfdfd */
+  color: #222;
+}
+
+.section-pastel {
+  background: rgba(249, 246, 255, 0.8); /* was #f9f6ff */
+  color: #222;
+}
+
+/* OPTIONAL: Also make your hero-section-alt partially transparent 
+   if you want the bubbles to show behind it as well. 
+   You can remove the clip-path or keep it:
+*/
+.hero-section-alt {
+  background: linear-gradient(
+    135deg,
+    rgba(108, 99, 255, 0.8) 0%,
+    rgba(179, 102, 255, 0.8) 40%,
+    rgba(255, 204, 241, 0.8) 100%
+  );
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+}
 
 
