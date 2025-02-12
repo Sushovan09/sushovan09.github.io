@@ -1,0 +1,636 @@
+/* -----------------------------------
+  Reset & Basic Setup
+----------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #fdfdfd;
+  color: #222;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Container Utility */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* -----------------------------------
+  Sidebar (Lateral Navigation)
+----------------------------------- */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 80px;
+  background-color: #fafafa;
+  border-right: 1px solid #ddd;
+  z-index: 9999;
+  transition: width 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem 0;
+}
+
+.side-logo {
+  font-family: "Fira Code", monospace;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  align-items: stretch;
+  text-align: center;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #222;
+  padding: 0.8rem 0;
+  font-size: 0.9rem;
+  font-family: "Fira Code", monospace;
+  border-left: 3px solid transparent;
+  transition: background 0.2s ease, border-left 0.2s ease;
+}
+
+.nav-link:hover {
+  background: #eee;
+  border-left: 3px solid #6c63ff;
+}
+
+.icon {
+  font-size: 1.2rem;
+  margin-right: 8px;
+}
+
+.link-text {
+  display: none; /* hidden by default for narrow sidebar */
+}
+
+/* Hamburger (for Mobile) */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  margin-top: auto;
+  margin-bottom: 2rem;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 25px;
+  background: #222;
+  margin-bottom: 4px;
+  border-radius: 2px;
+}
+
+/* Expand Sidebar on Mobile/Active */
+.sidebar.open {
+  width: 220px;
+}
+
+.sidebar.open .link-text {
+  display: inline-block;
+}
+
+/* -----------------------------------
+  Main Content
+----------------------------------- */
+.main-content {
+  margin-left: 80px; /* default sidebar width */
+  transition: margin-left 0.3s ease;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Shift content when sidebar is open */
+.main-content.shifted {
+  margin-left: 220px;
+}
+
+/* -----------------------------------
+  Floating Circles Background
+----------------------------------- */
+.floating-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: float 8s ease-in-out infinite;
+  background: radial-gradient(
+    circle,
+    #6c63ff 0%,
+    #b366ff 80%,
+    #ffcccc 100%
+  );
+}
+
+.circle1 {
+  width: 200px;
+  height: 200px;
+  top: 10%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.circle2 {
+  width: 300px;
+  height: 300px;
+  top: 40%;
+  left: 70%;
+  animation-delay: 2s;
+}
+
+.circle3 {
+  width: 150px;
+  height: 150px;
+  bottom: 10%;
+  left: 40%;
+  animation-delay: 4s;
+}
+
+.circle4 {
+  width: 250px;
+  height: 250px;
+  bottom: 25%;
+  right: 10%;
+  animation-delay: 6s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-40px) scale(1.05);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* -----------------------------------
+  Sections
+----------------------------------- */
+.section {
+  position: relative;
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+.section h2 {
+  font-family: "Fira Code", monospace;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #222;
+}
+
+.section-light {
+  background: #fdfdfd;
+  color: #222;
+}
+
+.section-pastel {
+  background: #f9f6ff; /* pastel background */
+  color: #222;
+}
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  background: #fff;
+}
+
+/* Wave SVG styling */
+.wave {
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+
+.wave-reverse {
+  transform: rotate(180deg);
+  margin-bottom: -1px;
+}
+
+/* -----------------------------------
+  Hero Content
+----------------------------------- */
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-name {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-name span {
+  color: #6c63ff;
+}
+
+.hero-tagline {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-links a {
+  text-decoration: none;
+  color: #fff;
+  background: #6c63ff;
+  padding: 0.6rem 1.2rem;
+  margin-right: 1rem;
+  border-radius: 25px;
+  font-family: "Fira Code", monospace;
+  transition: background 0.3s ease;
+}
+
+.hero-links a:hover {
+  background: #4e4e9c;
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-image {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #6c63ff;
+}
+
+/* -----------------------------------
+  Split Layout (About, Education, Skills, Contact)
+----------------------------------- */
+.split {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+}
+
+.split-img,
+.split-text {
+  flex: 1;
+}
+
+.responsive-img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+}
+
+/* -----------------------------------
+  Projects Grid
+----------------------------------- */
+.projects-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.project-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 1rem;
+}
+
+.project-title {
+  font-family: "Fira Code", monospace;
+  font-size: 1.2rem;
+  color: #6c63ff;
+  margin-bottom: 0.5rem;
+}
+
+.more-projects {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* -----------------------------------
+  Contact Form
+----------------------------------- */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: #f4f4f4;
+  border: 1px solid #ccc;
+  padding: 0.9rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  outline: none;
+  font-family: inherit;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #6c63ff;
+}
+
+.send-btn {
+  background: #28a745;
+  border: none;
+}
+
+.send-btn:hover {
+  background: #218838;
+  cursor: pointer;
+}
+
+.social-links {
+  margin-top: 1.5rem;
+}
+
+.social-links .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.social-icon {
+  width: 30px;
+  height: auto;
+}
+
+/* -----------------------------------
+  Footer
+----------------------------------- */
+.footer {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.download-cv {
+  margin-bottom: 1rem;
+}
+
+/* -----------------------------------
+  Buttons
+----------------------------------- */
+.btn {
+  text-decoration: none;
+  color: #fff;
+  background: #6c63ff;
+  padding: 0.7rem 1.4rem;
+  border-radius: 25px;
+  font-family: "Fira Code", monospace;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn:hover {
+  background: #4e4e9c;
+  transform: scale(1.03);
+}
+
+/* -----------------------------------
+  Highlight Classes
+----------------------------------- */
+.highlight-red {
+  color: #ff4d4d;
+}
+
+.highlight-blue {
+  color: #4da6ff;
+}
+
+.highlight-green {
+  color: #66ff66;
+}
+
+.highlight-purple {
+  color: #b366ff;
+}
+
+/* -----------------------------------
+  Responsive
+----------------------------------- */
+@media (max-width: 992px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-image {
+    margin-top: 2rem;
+  }
+  .split {
+    flex-direction: column;
+  }
+  .sidebar {
+    position: fixed;
+    width: 70px;
+  }
+  .main-content {
+    margin-left: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hamburger visible */
+  .hamburger {
+    display: block;
+  }
+  /* Hide link text unless sidebar is open */
+  .link-text {
+    display: none !important;
+  }
+}
+
+
+
+
+
+/* -----------------------------------
+  Updated Hero Section Styles
+----------------------------------- */
+
+/* A new hero class to avoid conflict with your existing .hero-section */
+.hero-section-alt {
+  position: relative;
+  min-height: 100vh; /* Full screen height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    #6c63ff 0%,
+    #b366ff 40%,
+    #ffccf1 100%
+  );
+  /* Clip-path angle at the bottom to create a stylish transition */
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+}
+
+/* Container that holds text and image side by side */
+.hero-content-alt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; /* ensures responsiveness on smaller screens */
+  text-align: left;
+  padding-top: 60px;  /* optional: top spacing */
+  padding-bottom: 60px; /* optional: bottom spacing */
+}
+
+/* Left Column */
+.hero-left {
+  flex: 1;
+  min-width: 280px;
+  margin-right: 2rem;
+  color: #fff;
+}
+
+.hero-name {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+.hero-name span {
+  color: #fff; /* or #ffd700, pick any highlight color */
+}
+
+.hero-tagline {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Right Column */
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  min-width: 280px;
+}
+
+.profile-image-alt {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid #fff;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Hero Links */
+.hero-links a {
+  display: inline-block;
+  text-decoration: none;
+  color: #6c63ff;
+  background: #fff;
+  padding: 0.6rem 1rem;
+  margin-right: 1rem;
+  border-radius: 25px;
+  font-family: "Fira Code", monospace;
+  transition: background 0.3s, color 0.3s;
+}
+
+.hero-links a:hover {
+  background: #4e4e9c;
+  color: #fff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+  .hero-content-alt {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-left {
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
+  .hero-right {
+    margin-bottom: 2rem;
+  }
+}
+
+.profile-image-alt {
+  max-width: 300px;
+  width: 100%;         /* so on very narrow screens, it shrinks below 300px */
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid #fff;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+

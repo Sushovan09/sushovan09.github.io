@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+  <title>Sushovan Pan - Portfolio</title>
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Fira+Code:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Side Navigation -->
+  <aside class="sidebar" id="sidebar">
+    <div class="side-logo">SP</div>
+    <nav class="nav-menu">
+      <a href="#home" class="nav-link">
+        <span class="icon">🏠</span>
+        <span class="link-text">Home</span>
+      </a>
+      <a href="#about" class="nav-link">
+        <span class="icon">🙋‍♂️</span>
+        <span class="link-text">About</span>
+      </a>
+      <a href="#portfolio" class="nav-link">
+        <span class="icon">💼</span>
+        <span class="link-text">Projects</span>
+      </a>
+      <a href="#education" class="nav-link">
+        <span class="icon">🎓</span>
+        <span class="link-text">Education</span>
+      </a>
+      <a href="#skills" class="nav-link">
+        <span class="icon">⚙️</span>
+        <span class="link-text">Skills</span>
+      </a>
+      <a href="#contact" class="nav-link">
+        <span class="icon">✉️</span>
+        <span class="link-text">Contact</span>
+      </a>
+    </nav>
+    <!-- Hamburger for mobile -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </aside>
+
+  <!-- Main Content Wrapper -->
+  <main class="main-content" id="main-content">
+    <!-- Floating Animated Circles Background -->
+    <div class="floating-bg">
+      <div class="circle circle1"></div>
+      <div class="circle circle2"></div>
+      <div class="circle circle3"></div>
+      <div class="circle circle4"></div>
+    </div>
+
+<!-- Home / Hero Section -->
+<header id="home" class="section hero-section-alt">
+  <div class="hero-content-alt container">
+    <div class="hero-left">
+      <h1 class="hero-name">Hi, I'm <span>Sushovan Pan</span></h1>
+      <p class="hero-tagline">
+        <span id="typewriter"></span>
+      </p>
+      <div class="hero-links">
+        <a
+          href="https://www.linkedin.com/in/sushovan-pan-6753b920b"
+          target="_blank"
+          >LinkedIn</a
+        >
+        <a href="https://github.com/Sushovan09" target="_blank"
+          >GitHub</a
+        >
+        <a
+          href="mailto:sushovanpan2003@gmail.com"
+          target="_blank"
+          >Email</a
+        >
+      </div>
+    </div>
+    <div class="hero-right">
+      <img
+        src="sushovan-photo.jpg"
+        alt="Sushovan Pan"
+        class="profile-image-alt"
+      />
+    </div>
+  </div>
+</header>
+
+
+    <!-- About Section -->
+    <section id="about" class="section section-light">
+      <div class="container">
+        <h2>About Me</h2>
+        <div class="split">
+          <div class="split-img">
+            <img
+              src="aboutme.gif"
+              alt="About me"
+              class="responsive-img"
+            />
+          </div>
+          <div class="split-text">
+            <p>
+              Hi, I'm <strong>Sushovan Pan</strong>, an
+              <span class="highlight-purple">MSc Computer Science</span>
+              student at
+              <span class="highlight-blue"
+                >Ramakrishna Mission Vivekananda Educational and Research
+                Institute</span
+              >. My expertise lies in
+              <span class="highlight-green">AI/ML</span>,
+              <span class="highlight-red">full-stack development</span>,
+              and <span class="highlight-purple">audio processing</span>.
+              I have undertaken various innovative projects—including rare
+              bird species classification, secure IVR systems, and a PDF
+              chatbot application.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Wavy Transition (SVG) -->
+      <svg
+        class="wave wave-reverse"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 320"
+      >
+        <path
+          fill="#f9f9f9"
+          fill-opacity="1"
+          d="M0,288L48,272C96,256,192,224,288,186.7C384,149,480,107,576,128C672,149,768,235,864,266.7C960,299,1056,277,1152,240C1248,203,1344,149,1392,122.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+        ></path>
+      </svg>
+    </section>
+
+    <!-- Portfolio / Projects Section -->
+    <section id="portfolio" class="section section-pastel">
+      <div class="container">
+        <h2>My Projects</h2>
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-card">
+            <img
+              src="a.webp"
+              alt="Rare Bird Species Classification"
+              class="project-img"
+            />
+            <div class="project-info">
+              <h3 class="project-title">Rare Bird Species Classification</h3>
+              <p>
+                Developed a system to classify bird species from audio
+                recordings using
+                <span class="highlight-blue">React</span>,
+                <span class="highlight-red">Flask</span>, and
+                <span class="highlight-green">machine learning</span>.
+                Integrated detailed bird descriptions and images from a local
+                JSON file.
+              </p>
+              <a
+                href="https://github.com/Sushovan09/IUCN_INDIA_Red_List_Bird_Sound_Classification"
+                class="btn"
+                target="_blank"
+                >Learn More</a
+              >
+            </div>
+          </div>
+          <!-- Project 2 -->
+          <div class="project-card">
+            <img
+              src="b.webp"
+              alt="VoiceChain IVR"
+              class="project-img"
+            />
+            <div class="project-info">
+              <h3 class="project-title">VoiceChain: Secure Automated IVR</h3>
+              <p>
+                Currently developing an IVR system integrating
+                <span class="highlight-green"
+                  >LLM-based natural language interaction</span
+                >
+                with
+                <span class="highlight-blue">blockchain-secured</span>
+                call records.
+              </p>
+              <a
+                href="https://github.com/Sushovan09/voiceChain"
+                class="btn"
+                target="_blank"
+                >Learn More</a
+              >
+            </div>
+          </div>
+          <!-- Project 3 -->
+          <div class="project-card">
+            <img
+              src="c.webp"
+              alt="PDF Chatbot Application"
+              class="project-img"
+            />
+            <div class="project-info">
+              <h3 class="project-title">PDF Chatbot Application</h3>
+              <p>
+                Created a conversational tool for interactive PDF analysis
+                using <span class="highlight-blue">React</span>,
+                <span class="highlight-red">Flask</span>,
+                <span class="highlight-green">LangChain</span>, and
+                <span class="highlight-purple">FAISS</span>. Features include
+                source-referenced responses and chat history management.
+              </p>
+              <a
+                href="https://github.com/Sushovan09/pdfChatBot"
+                class="btn"
+                target="_blank"
+                >Learn More</a
+              >
+            </div>
+          </div>
+          <!-- More Projects -->
+          <div class="project-card more-projects">
+            <div class="project-info">
+              <h3 class="project-title">+ More Projects</h3>
+              <p>
+                Explore additional projects and innovative ideas coming soon.
+              </p>
+              <a href="other-projects.html" class="btn">View More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Wavy Transition -->
+      <svg
+        class="wave"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 320"
+      >
+        <path
+          fill="#fff"
+          fill-opacity="1"
+          d="M0,224L34.3,213.3C68.6,203,137,181,206,186.7C274.3,192,343,224,411,240C480,256,549,256,617,234.7C685.7,213,754,171,823,154.7C891.4,139,960,149,1029,149.3C1097.1,149,1166,139,1234,128C1302.9,117,1371,107,1406,101.3L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,685,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"
+        ></path>
+      </svg>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section section-light">
+      <div class="container">
+        <h2>Education</h2>
+        <div class="split">
+          <div class="split-img">
+            <img
+              src="education.gif"
+              alt="Education"
+              class="responsive-img"
+            />
+          </div>
+          <div class="split-text">
+            <div class="edu-item">
+              <h3>MSc in Computer Science</h3>
+              <p>
+                <span class="highlight-blue"
+                  >Ramakrishna Mission Vivekananda Educational and
+                  Research Institute</span
+                >, Belur, India<br />
+                Aug 2023 – July 2025<br />
+                Current CGPA:
+                <span class="highlight-green">6.00/10</span>
+              </p>
+            </div>
+            <div class="edu-item">
+              <h3>BSc in Computer Science</h3>
+              <p>
+                <span class="highlight-blue"
+                  >Parasanta Chandra Mahalanobis Mahavidyalaya</span
+                >, Kolkata, India<br />
+                Aug 2020 – Aug 2023<br />
+                CGPA: <span class="highlight-green">9.96/10</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Wavy Transition -->
+      <svg
+        class="wave wave-reverse"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 320"
+      >
+        <path
+          fill="#fdfdfd"
+          fill-opacity="1"
+          d="M0,256L40,256C80,256,160,256,240,224C320,192,400,128,480,112C560,96,640,128,720,128C800,128,880,96,960,106.7C1040,117,1120,171,1200,186.7C1280,203,1360,181,1400,170.7L1440,160L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
+        ></path>
+      </svg>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section section-pastel">
+      <div class="container">
+        <h2>Technical Skills</h2>
+        <div class="split">
+          <div class="split-img">
+            <img src="skills.gif" alt="Skills" class="responsive-img" />
+          </div>
+          <div class="split-text">
+            <ul class="skills-list">
+              <li>
+                <strong>Languages:</strong>
+                <span class="highlight-red">C</span>,
+                <span class="highlight-green">C++</span>,
+                <span class="highlight-blue">Java</span>,
+                <span class="highlight-purple">Python</span>
+              </li>
+              <li>
+                <strong>Frontend:</strong>
+                <span class="highlight-blue">HTML</span>,
+                <span class="highlight-red">CSS</span>,
+                <span class="highlight-green">JavaScript</span>,
+                <span class="highlight-purple">React</span>
+              </li>
+              <li>
+                <strong>Database:</strong>
+                <span class="highlight-green">MySQL</span>
+              </li>
+              <li>
+                <strong>Frameworks:</strong>
+                <span class="highlight-blue">Flask</span>,
+                <span class="highlight-red">Streamlit</span>
+              </li>
+              <li>
+                <strong>Platforms:</strong>
+                <span class="highlight-purple">Windows</span>,
+                <span class="highlight-green">Linux</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Wavy Transition -->
+      <svg
+        class="wave"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 320"
+      >
+        <path
+          fill="#fff"
+          fill-opacity="1"
+          d="M0,96L60,96C120,96,240,96,360,112C480,128,600,160,720,192C840,224,960,256,1080,261.3C1200,267,1320,245,1380,234.7L1440,224L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+        ></path>
+      </svg>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section-light">
+      <div class="container">
+        <h2>Get in Touch</h2>
+        <div class="split">
+          <div class="split-text">
+            <p>
+              Connect with me via social media or send me a message directly.
+            </p>
+            <div class="social-links">
+              <a
+                href="https://linkpop.com/sushovan39"
+                target="_blank"
+                class="btn"
+              >
+                <img
+                  src="social.gif"
+                  alt="Social Hub"
+                  class="social-icon"
+                />
+                <span class="highlight-blue">Social Hub</span>
+              </a>
+            </div>
+          </div>
+          <div class="split-img">
+            <form
+              action="https://docs.google.com/forms/d/e/1FAIpQLSd4IbSRYe8lxONoDLncRWGEY1BYWr-OLTyBQtuD-5okkTvbzQ/formResponse"
+              method="POST"
+              target="_blank"
+              class="contact-form"
+            >
+              <input
+                type="text"
+                name="entry.2000663714"
+                placeholder="Your Name"
+                required
+              />
+              <input
+                type="email"
+                name="entry.995878073"
+                placeholder="Your Email"
+                required
+              />
+              <textarea
+                name="entry.470151249"
+                rows="5"
+                placeholder="Your Message"
+                required
+              ></textarea>
+              <button type="submit" class="btn send-btn">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- Wavy Transition -->
+      <svg
+        class="wave wave-reverse"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 320"
+      >
+        <path
+          fill="#fefefe"
+          fill-opacity="1"
+          d="M0,160L48,170.7C96,181,192,203,288,224C384,245,480,267,576,272C672,277,768,267,864,234.7C960,203,1056,149,1152,144C1248,139,1344,181,1392,202.7L1440,224L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+        ></path>
+      </svg>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer section-pastel">
+      <div class="container footer-content">
+        <a href="Sushovan-Pan-CV.pdf" download class="btn download-cv"
+          >Download CV</a
+        >
+        <p>&copy; 2024 Sushovan Pan</p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
+
