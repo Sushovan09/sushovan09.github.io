@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Other Projects - Futuristic Edition</title>
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Inline CSS -->
+  <style>
+    /* ========== Reset ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ========== Base & Body ========== */
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      font-family: 'Poppins', sans-serif;
+      color: #ffffff;
+      background: #000000;
+    }
+
+    /* Custom Cursor (small embedded SVG) */
+    body {
+      cursor: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCA1NCA1NCI+PHBvbHlnb24gcG9pbnRzPSIwLDI0IDI0LDI0IDI0LDAgNTQsMjQgMjQsNDggMjQsMjQgMCIgZmlsbD0iI2ZmZiIgLz48L3N2Zz4='), auto;
+    }
+
+    /* ====== Animated Conic Gradient Background ====== */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(
+        from 180deg,
+        #0ff 0deg,
+        #f0f 90deg,
+        #ff0 180deg,
+        #0ff 270deg,
+        #f0f 360deg
+      );
+      animation: spin 8s linear infinite;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+    @keyframes spin {
+      0%   { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Container */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      padding: 40px 0;
+    }
+
+    /* ========== Scroll Animation ========== */
+    .scroll-animation {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .scroll-animation.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== Glitch Heading ========== */
+    .glitch {
+      position: relative;
+      display: inline-block;
+    }
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+    }
+    .glitch::before {
+      text-shadow: 2px 0 #ff00c1;
+      animation: glitch-anim 2s infinite ease-in-out alternate-reverse;
+    }
+    .glitch::after {
+      text-shadow: -2px 0 #00fff9;
+      animation: glitch-anim2 2s infinite ease-in-out alternate-reverse;
+    }
+    @keyframes glitch-anim {
+      0%   { transform: translate(0); }
+      10%  { transform: translate(-2px, -2px); }
+      20%  { transform: translate(-2px,  2px); }
+      30%  { transform: translate( 2px, -2px); }
+      40%  { transform: translate( 2px,  2px); }
+      100% { transform: translate(0); }
+    }
+    @keyframes glitch-anim2 {
+      0%   { transform: translate(0); }
+      10%  { transform: translate( 2px,  2px); }
+      20%  { transform: translate( 2px, -2px); }
+      30%  { transform: translate(-2px,  2px); }
+      40%  { transform: translate(-2px, -2px); }
+      100% { transform: translate(0); }
+    }
+
+    /* ========== Headings ========== */
+    .big-title {
+      font-family: 'Fira Code', monospace;
+      font-size: 2.8em;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-family: 'Fira Code', monospace;
+      font-size: 2em;
+      margin-bottom: 20px;
+      border-bottom: 2px solid rgba(255,255,255,0.3);
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    /* Paragraphs */
+    p {
+      font-size: 1.1em;
+      color: #ccc;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* ========== Glass Card ========== */
+    .glass-card {
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+      border-radius: 10px;
+      margin: 40px 0;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ========== Projects Grid ========== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .project-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+    .project-info h3 {
+      font-family: 'Fira Code', monospace;
+      margin-bottom: 10px;
+      font-size: 1.4em;
+      color: #fff;
+    }
+    .project-info p {
+      color: #bbb;
+      font-size: 0.95em;
+      margin-bottom: 15px;
+    }
+
+    /* ========== Buttons ========== */
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      margin-top: 5px;
+      background: linear-gradient(90deg, #00b09b, #96c93d);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 30px;
+      font-family: 'Fira Code', monospace;
+      font-weight: 600;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(90deg, #96c93d, #00b09b);
+    }
+
+    /* ========== Highlight Colors ========== */
+    .highlight-red    { color: #FF6347; }   /* Tomato */
+    .highlight-blue   { color: #1E90FF; }   /* DodgerBlue */
+    .highlight-green  { color: #32CD32; }   /* LimeGreen */
+    .highlight-purple { color: #9370DB; }   /* MediumPurple */
+    .highlight-yellow { color: #FFD700; }   /* Golden Yellow */
+    .highlight-orange { color: #FFA500; }   /* Orange */
+    .highlight-pink   { color: #FF69B4; }   /* Hot Pink */
+    .highlight-teal   { color: #00CED1; }   /* Dark Turquoise */
+
+    /* ========== Responsive Adjustments ========== */
+    @media (max-width: 768px) {
+      .container {
+        width: 95%;
+        padding: 20px 0;
+      }
+      .big-title {
+        font-size: 2em;
+      }
+      h2 {
+        font-size: 1.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header (Scroll-animated) -->
+    <header class="glass-card scroll-animation">
+      <h1 class="big-title glitch" data-text="Other Projects">Other Projects</h1>
+      <p>
+        Below you can find some additional projects I've worked on. The three game projects 
+        (<span class="highlight-blue">spacePythonGame</span>, <span class="highlight-orange">tic-tac-toe</span>, 
+        and <span class="highlight-red">snake</span>) are basic arcade games developed using 
+        <span class="highlight-green">Pygame</span>. In addition, the 
+        <span class="highlight-teal">typingSpeedCheck</span> project is a command-line typing 
+        speed checker written in <span class="highlight-purple">Java</span>.
+      </p>
+    </header>
+
+    <!-- Game Projects Section -->
+    <section class="glass-card scroll-animation">
+      <h2 class="glitch" data-text="Game Projects">Game Projects</h2>
+      <div class="projects-grid">
+        <!-- Project 1: spacePythonGame -->
+        <div class="project-card">
+          <div class="project-info">
+            <h3><span class="highlight-blue">spacePythonGame</span></h3>
+            <p>
+              <strong>Status:</strong> Public<br>
+              <strong>Language:</strong> Python<br>
+              <strong>Updated:</strong> Mar 21, 2023<br>
+              A basic space shooter game built with <span class="highlight-green">Pygame</span>. 
+              Dodge obstacles and defeat enemies in a classic arcade style.
+            </p>
+            <a
+              href="https://github.com/Sushovan09/spacePythonGame"
+              target="_blank"
+              class="btn"
+            >
+              View on GitHub
+            </a>
+          </div>
+        </div>
+        <!-- Project 2: tic-tac-toe -->
+        <div class="project-card">
+          <div class="project-info">
+            <h3><span class="highlight-orange">tic-tac-toe</span></h3>
+            <p>
+              <strong>Status:</strong> Public<br>
+              <strong>Language:</strong> Python<br>
+              <strong>Updated:</strong> Mar 21, 2023<br>
+              A classic Tic Tac Toe game implemented using 
+              <span class="highlight-green">Pygame</span> that demonstrates simple 
+              game logic and an interactive UI.
+            </p>
+            <a
+              href="https://github.com/Sushovan09/tic-tac-toe"
+              target="_blank"
+              class="btn"
+            >
+              View on GitHub
+            </a>
+          </div>
+        </div>
+        <!-- Project 3: snake -->
+        <div class="project-card">
+          <div class="project-info">
+            <h3><span class="highlight-red">snake</span></h3>
+            <p>
+              <strong>Status:</strong> Private<br>
+              <strong>Language:</strong> Python<br>
+              A traditional Snake game built with 
+              <span class="highlight-green">Pygame</span>. Although basic, it delivers 
+              a nostalgic gaming experience.
+            </p>
+            <a
+              href="https://github.com/Sushovan09/snake"
+              target="_blank"
+              class="btn"
+            >
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typing Speed Checker Section -->
+    <section class="glass-card scroll-animation">
+      <h2 class="glitch" data-text="Typing Speed Checker">Typing Speed Checker</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-info">
+            <h3><span class="highlight-teal">typingSpeedCheck</span></h3>
+            <p>
+              <strong>Status:</strong> Public<br>
+              <strong>Language:</strong> Java (Command Line)<br>
+              A simple command-line application that measures your typing speed. This project is 
+              written in Java and designed to help improve typing efficiency.
+            </p>
+            <a
+              href="https://github.com/Sushovan09/typingSpeedCheck"
+              target="_blank"
+              class="btn"
+            >
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass-card scroll-animation" style="text-align: center;">
+      <p>
+        For more projects, please visit my
+        <a href="https://github.com/Sushovan09" target="_blank" class="btn">GitHub</a>.
+      </p>
+    </footer>
+  </div>
+
+  <!-- Inline JS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // ========== Scroll Animation ==========
+      const scrollElements = document.querySelectorAll(".scroll-animation");
+
+      const isInView = (el) => {
+        const elementTop = el.getBoundingClientRect().top;
+        return (
+          elementTop <= (window.innerHeight || document.documentElement.clientHeight) * 0.85
+        );
+      };
+
+      const revealElement = (el) => {
+        el.classList.add("visible");
+      };
+
+      const handleScroll = () => {
+        scrollElements.forEach((el) => {
+          if (isInView(el)) {
+            revealElement(el);
+          }
+        });
+      };
+
+      window.addEventListener("scroll", handleScroll);
+      handleScroll(); // Trigger on load
+
+      // ========== Sound Effects ==========
+      // Base64-encoded short beep
+      const beepBase64 = 
+        "data:audio/mp3;base64,//uQxAABAAARAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASAAACAgACAAACAgAaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGhpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlpaWlqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+
+      const beepSound = new Audio(beepBase64);
+
+      function playBeep() {
+        // Clone to allow overlapping
+        const s = beepSound.cloneNode();
+        s.play().catch(() => {});
+      }
+
+      // Add beep on hover & click for all .btn & links
+      const clickableElements = document.querySelectorAll("a, .btn");
+      clickableElements.forEach((elem) => {
+        elem.addEventListener("mouseover", playBeep);
+        elem.addEventListener("click", playBeep);
+      });
+    });
+  </script>
+</body>
+</html>
+
