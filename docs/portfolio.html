@@ -32,38 +32,112 @@
         </ul>
       </div>
     </nav>
+<!-- Header Section -->
+<section id="home" class="header-section scroll-animation">
+  <div class="container header-content">
+    <div class="profile">
+      <div class="profile-container">
+        <img
+          src="sushovan-photo.jpg"
+          alt="Sushovan Pan"
+          class="profile-photo"
+        />
+        <div class="profile-border"></div>
+      </div>
+    </div>
+    <div class="intro-text">
+      <h1 id="greeting">Hello, I'm Sushovan Pan</h1>
+      <p class="tagline"><span id="typewriter"></span></p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/sushovan-pan-6753b920b" target="_blank">LinkedIn</a>
+        <a href="https://github.com/Sushovan09" target="_blank">GitHub</a>
+        <a href="mailto:sushovanpan2003@gmail.com" target="_blank">Email</a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-down">
+    <span>&darr;</span>
+  </div>
+</section>
 
-    <!-- Header Section -->
-    <section id="home" class="header-section scroll-animation">
-      <div class="container header-content">
-        <div class="profile">
-          <div class="profile-container">
-            <img
-              src="sushovan-photo.jpg"
-              alt="Sushovan Pan"
-              class="profile-photo"
-            />
-            <div class="profile-border"></div>
-          </div>
-        </div>
-        <div class="intro-text">
-          <h1>Sushovan Pan</h1>
-          <p class="tagline"><span id="typewriter"></span></p>
-          <div class="social-links">
-            <a
-              href="https://www.linkedin.com/in/sushovan-pan-6753b920b"
-              target="_blank"
-              >LinkedIn</a
-            >
-            <a href="https://github.com/Sushovan09" target="_blank">GitHub</a>
-            <a href="mailto:sushovanpan2003@gmail.com" target="_blank">Email</a>
-          </div>
-        </div>
-      </div>
-      <div class="scroll-down">
-        <span>&darr;</span>
-      </div>
-    </section>
+<style>
+  /* Dynamic Background */
+  /* Dynamic Background with Lower Opacity */
+  .header-section {
+    transition: background 1s ease-in-out;
+    padding: 50px 0;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.1); /* Default transparent background */
+  }
+
+  /* Profile Picture Glow Effect */
+  .profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    transition: box-shadow 0.5s ease-in-out;
+  }
+
+  /* Typewriter Effect */
+  .tagline {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff;
+    height: 30px;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    updateTimeEffects(); // Call once on load
+    setInterval(updateTimeEffects, 10000); // Update every 10 seconds
+
+    function updateTimeEffects() {
+      const now = new Date();
+      const hour = now.getHours();
+      const headerSection = document.querySelector(".header-section");
+      const profilePhoto = document.querySelector(".profile-photo");
+      const greeting = document.getElementById("greeting");
+
+      // Background Changes Based on Time
+      if (hour >= 6 && hour < 12) {
+  // Morning (light soft tones)
+  headerSection.style.background = "linear-gradient(120deg, rgba(255, 154, 158, 0.1), rgba(250, 208, 196, 0.1))";
+  greeting.innerText = "Good Morning! I'm Sushovan Pan";
+} else if (hour >= 12 && hour < 18) {
+  // Afternoon (soft pastel tones)
+  headerSection.style.background = "linear-gradient(120deg, rgba(251, 194, 235, 0.1), rgba(166, 193, 238, 0.1))";
+  greeting.innerText = "Good Afternoon! I'm Sushovan Pan";
+} else if (hour >= 18 && hour < 21) {
+  // Evening (warmer colors, slightly darker)
+  headerSection.style.background = "linear-gradient(120deg, rgba(161, 140, 209, 0.1), rgba(251, 194, 235, 0.1))";
+  greeting.innerText = "Good Evening! I'm Sushovan Pan";
+} else {
+  // Night (darker with lower opacity)
+  headerSection.style.background = "linear-gradient(120deg, rgba(0, 4, 40, 0.1), rgba(0, 78, 146, 0.1))";
+  greeting.innerText = "Good Night! I'm Sushovan Pan";
+}
+
+
+      // Profile Picture Border Glow
+      const colors = ["#ff4757", "#1e90ff", "#2ed573", "#f39c12", "#9b59b6"];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      profilePhoto.style.boxShadow = `0px 0px 20px ${randomColor}`;
+
+      // Typewriter Effect for Tagline
+      const taglineTexts = ["AI & ML Developer", "Full Stack Engineer", "Blockchain Enthusiast", "Open Source Contributor"];
+      let index = 0;
+      const typewriter = document.getElementById("typewriter");
+
+      function typeEffect() {
+        typewriter.innerText = taglineTexts[index];
+        index = (index + 1) % taglineTexts.length;
+      }
+      typeEffect();
+      setInterval(typeEffect, 2000); // Change tagline every 2 seconds
+    }
+  });
+</script>
 
     <!-- About Section -->
     <section id="about" class="glass-card scroll-animation right-align">
