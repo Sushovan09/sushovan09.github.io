@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Full Page Scroll Landing</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      scroll-behavior: smooth;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      overflow-y: scroll;
+    }
+    /* Scroll Container with snap behavior */
+    .scroll-container {
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+    }
+    /* Each section takes up the full viewport */
+    .section {
+      height: 100vh;
+      width: 100%;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      transition: opacity 1s ease-in-out;
+      opacity: 0;
+    }
+    /* Fade in when visible */
+    .section.visible {
+      opacity: 1;
+    }
+    /* Unique gradients for each section */
+    #hero {
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+    }
+    #about {
+      background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    }
+    #projects {
+      background: linear-gradient(135deg, #43cea2, #185a9d);
+    }
+    #contact {
+      background: linear-gradient(135deg, #fa709a, #fee140);
+    }
+    /* Fixed Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px;
+    }
+    header nav a {
+      margin: 0 15px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+    header nav a:hover {
+      color: #ddd;
+    }
+    /* Content styling inside each section */
+    .content {
+      max-width: 800px;
+      padding: 20px;
+      color: #fff;
+    }
+    h1, h2 {
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <!-- Fixed Navigation -->
+  <header>
+    <nav>
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Full-page scroll container -->
+  <div class="scroll-container">
+    <!-- Hero Section -->
+    <section id="hero" class="section">
+      <div class="content">
+        <h1>Welcome to My Portfolio</h1>
+        <p>Experience seamless, full-page transitions with a unique look for each section.</p>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="content">
+        <h2>About Me</h2>
+        <p>
+          I’m a creative professional passionate about designing and developing intuitive digital experiences.
+        </p>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+      <div class="content">
+        <h2>My Projects</h2>
+        <p>
+          Discover a curated selection of my work where design meets innovation.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <div class="content">
+        <h2>Contact</h2>
+        <p>
+          Let’s connect and collaborate on your next project!
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <!-- JavaScript for triggering animations on scroll -->
+  <script>
+    // Use IntersectionObserver to add "visible" class when sections enter the viewport
+    const sections = document.querySelectorAll('.section');
+    const observerOptions = {
+      threshold: 0.5
+    };
+
+    const sectionObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Uncomment the next line if you want the animation to trigger only once:
+          // observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => sectionObserver.observe(section));
+  </script>
+</body>
+</html>
+

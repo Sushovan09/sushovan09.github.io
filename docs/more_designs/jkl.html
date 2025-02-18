@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unique Full-Page Scroll Landing</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      scroll-behavior: smooth;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      overflow-y: scroll;
+      background: #f5f5f5;
+    }
+    /* Fixed Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px 0;
+    }
+    header nav a {
+      margin: 0 15px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+    header nav a:hover {
+      color: #ddd;
+    }
+    /* Scroll Container with Snap */
+    .scroll-container {
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+    }
+    /* Common Section Styles */
+    .section {
+      height: 100vh;
+      width: 100%;
+      scroll-snap-align: start;
+      position: relative;
+      transition: opacity 1s ease, transform 1s ease;
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Hero Section */
+    #hero {
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+      flex-direction: column;
+      text-align: center;
+    }
+    #hero h1 {
+      font-size: 3.5rem;
+      color: #fff;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease forwards;
+    }
+    #hero p {
+      font-size: 1.5rem;
+      color: #e0e0e0;
+      margin-bottom: 30px;
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 0.3s;
+    }
+    #hero .cta-button {
+      padding: 15px 30px;
+      background: #fff;
+      color: #2575fc;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 0.5s;
+      transition: transform 0.3s;
+    }
+    #hero .cta-button:hover {
+      transform: scale(1.05);
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* About Section - Two Column Layout */
+    #about {
+      background: linear-gradient(135deg, #ff7e5f, #feb47b);
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+    .about-content {
+      display: flex;
+      max-width: 1000px;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .about-image {
+      flex: 1 1 300px;
+      max-width: 400px;
+      text-align: center;
+    }
+    .about-image img {
+      width: 80%;
+      border-radius: 50%;
+      border: 5px solid #fff;
+    }
+    .about-text {
+      flex: 1 1 300px;
+      color: #fff;
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
+    .about-text h2 {
+      margin-bottom: 15px;
+      font-size: 2.5rem;
+    }
+    /* Projects Section - Grid of Cards */
+    #projects {
+      background: linear-gradient(135deg, #43cea2, #185a9d);
+      flex-direction: column;
+      text-align: center;
+    }
+    #projects h2 {
+      color: #fff;
+      margin-bottom: 20px;
+      font-size: 2.8rem;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      width: 100%;
+    }
+    .project-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    .project-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .project-card h3 {
+      padding: 15px;
+      font-size: 1.3rem;
+      color: #333;
+    }
+    /* Contact Section - Form Layout */
+    #contact {
+      background: linear-gradient(135deg, #fa709a, #fee140);
+      flex-direction: column;
+    }
+    #contact h2 {
+      color: #fff;
+      margin-bottom: 20px;
+      font-size: 2.8rem;
+    }
+    .contact-form {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .contact-form button {
+      width: 100%;
+      padding: 12px;
+      background: #fa709a;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .contact-form button:hover {
+      background: #f06d8e;
+    }
+    /* Responsive adjustments for About Section */
+    @media (max-width: 768px) {
+      #about {
+        flex-direction: column;
+      }
+      .about-content {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Fixed Navigation -->
+  <header>
+    <nav>
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Scroll Container -->
+  <div class="scroll-container">
+    <!-- Hero Section -->
+    <section id="hero" class="section">
+      <div class="hero-content">
+        <h1>Welcome!</h1>
+        <p>Discover my world of creativity and innovation.</p>
+        <button class="cta-button" onclick="location.href='#about'">Learn More</button>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="about-content">
+        <div class="about-image">
+          <img src="https://via.placeholder.com/300" alt="Profile Picture" />
+        </div>
+        <div class="about-text">
+          <h2>About Me</h2>
+          <p>
+            I'm a passionate designer and developer with a knack for creating visually stunning and user-friendly digital experiences. I blend creativity with technology to build impactful solutions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+      <div class="projects-section">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <img src="https://via.placeholder.com/400x180" alt="Project 1">
+            <h3>Project One</h3>
+          </div>
+          <div class="project-card">
+            <img src="https://via.placeholder.com/400x180" alt="Project 2">
+            <h3>Project Two</h3>
+          </div>
+          <div class="project-card">
+            <img src="https://via.placeholder.com/400x180" alt="Project 3">
+            <h3>Project Three</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <div class="contact-content">
+        <h2>Contact Me</h2>
+        <div class="contact-form">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <textarea placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- JavaScript for Section Visibility on Scroll -->
+  <script>
+    const sections = document.querySelectorAll('.section');
+    const observerOptions = { threshold: 0.5 };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // To animate only once, uncomment:
+          // observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
+
