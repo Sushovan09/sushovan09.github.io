@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sushovan Pan - Portfolio</title>
+
+    <!-- Using Poppins for body text and Fira Code for headings/UI elements -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Fira+Code:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Main CSS -->
+    <style>
+      /* BASIC RESET */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* BODY & BACKGROUND */
+      body {
+        font-family: 'Poppins', sans-serif;
+        color: #fff;
+        background: linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.85),
+            rgba(30, 30, 30, 0.85)
+          ),
+          url('def.jpg') no-repeat center center;
+        background-size: cover;
+        line-height: 1.6;
+      }
+
+      /* CONTAINER */
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 0;
+      }
+
+      /* NAVIGATION */
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+      }
+      .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      /* LOGO */
+      .nav-logo {
+        font-family: 'Fira Code', monospace;
+        font-size: 1.8em;
+        font-weight: 600;
+        text-decoration: none;
+        color: #fff;
+      }
+      /* NAV MENU */
+      .nav-menu {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+      }
+      .nav-menu li a {
+        text-decoration: none;
+        font-family: 'Fira Code', monospace;
+        font-weight: 500;
+        color: #ccc;
+        transition: color 0.3s;
+      }
+      .nav-menu li a:hover {
+        color: #fff;
+      }
+      /* HAMBURGER MENU for Mobile */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+      }
+      .hamburger span {
+        height: 3px;
+        width: 25px;
+        background: #fff;
+        margin-bottom: 5px;
+        border-radius: 5px;
+      }
+
+      /* GLASS CARD */
+      .glass-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 12px;
+        padding: 40px;
+        margin: 40px auto;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+
+      /* SCROLL ANIMATION */
+      .scroll-animation {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .scroll-animation.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* HEADER SECTION */
+      .header-section {
+        padding: 80px 0 40px;
+        text-align: left;
+        transition: background 1s ease-in-out; /* For dynamic background changes */
+      }
+      .header-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+      }
+
+      /* PROFILE */
+      .profile {
+        flex: 0 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .profile-container {
+        position: relative;
+        width: 175px;
+        height: 175px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      .profile-photo {
+        width: 175px;
+        height: 175px;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+        z-index: 1;
+        transition: box-shadow 0.5s ease-in-out;
+      }
+      .profile-border {
+        position: absolute;
+        border: 2px solid transparent;
+        width: 160px;
+        height: 160px;
+        top: -5px;
+        left: -5px;
+        border-radius: 50%;
+      }
+
+      /* INTRO TEXT */
+      .intro-text {
+        flex: 1;
+      }
+      .intro-text h1 {
+        font-family: 'Fira Code', monospace;
+        font-size: 2.8em;
+        margin-bottom: 10px;
+      }
+      .tagline {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-bottom: 15px;
+        height: 30px; /* Enough to hold one line of text for rotation effect */
+        overflow: hidden;
+      }
+
+      /* SOCIAL LINKS */
+      .social-links a {
+        margin-right: 15px;
+        text-decoration: none;
+        font-family: 'Fira Code', monospace;
+        font-weight: 500;
+        color: #09f;
+        transition: color 0.3s;
+        border-bottom: 1px dashed transparent;
+      }
+      .social-links a:hover {
+        border-bottom: 1px dashed #fff;
+      }
+
+      /* SCROLL DOWN INDICATOR */
+      .scroll-down {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 2em;
+        color: #fff;
+      }
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-10px);
+        }
+        60% {
+          transform: translateY(-5px);
+        }
+      }
+      .scroll-down span {
+        animation: bounce 2s infinite;
+      }
+
+      /* TWO COLUMN LAYOUT */
+      .two-col {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .two-col .text-col {
+        flex: 1;
+        text-align: left;
+      }
+      .two-col .img-col {
+        flex: 1;
+        text-align: center;
+      }
+      /* RIGHT ALIGN SECTIONS */
+      .right-align .two-col {
+        flex-direction: row-reverse;
+      }
+      .right-align .two-col .text-col {
+        text-align: left;
+      }
+
+      /* SECTION HEADINGS */
+      .glass-card h2 {
+        font-family: 'Fira Code', monospace;
+        font-size: 2em;
+        margin-bottom: 20px;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        display: inline-block;
+        padding-bottom: 10px;
+      }
+
+      /* PARAGRAPHS */
+      .glass-card p {
+        font-size: 1.1em;
+        color: #ddd;
+      }
+
+      /* PROJECTS GRID */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+      .project-card {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+      }
+      .project-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .project-info {
+        padding: 20px;
+      }
+      .project-info h3 {
+        font-family: 'Fira Code', monospace;
+        font-size: 1.6em;
+        margin-bottom: 10px;
+      }
+      .project-info p {
+        font-size: 1em;
+        margin-bottom: 20px;
+        color: #ccc;
+      }
+
+      /* BUTTONS */
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background: linear-gradient(45deg, #6c63ff, #4e4e9c);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 25px;
+        font-family: 'Fira Code', monospace;
+        font-weight: 600;
+        transition: background 0.3s, transform 0.3s;
+      }
+      .btn:hover {
+        background: linear-gradient(45deg, #4e4e9c, #6c63ff);
+        transform: scale(1.03);
+      }
+      /* DOWNLOAD CV BUTTON */
+      .download-cv {
+        font-size: 1.2em;
+        padding: 15px 40px;
+        margin: 20px auto;
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+      }
+      .download-cv::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: skewX(-20deg);
+        transition: left 0.5s ease;
+      }
+      .download-cv:hover::after {
+        left: 100%;
+      }
+      /* SEND MAIL BUTTON */
+      .send-mail-btn {
+        background: linear-gradient(45deg, #28a745, #218838);
+      }
+      .send-mail-btn:hover {
+        background: linear-gradient(45deg, #218838, #28a745);
+        transform: scale(1.03);
+      }
+
+      /* CONTACT FORM */
+      .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: left;
+      }
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        font-size: 1em;
+        transition: border-color 0.3s;
+      }
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        outline: none;
+        border-color: #6c63ff;
+      }
+      .contact-form button {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 8px;
+        background: #6c63ff;
+        color: #fff;
+        font-size: 1.1em;
+        font-weight: 600;
+        transition: background 0.3s, transform 0.3s;
+        cursor: pointer;
+      }
+      .contact-form button:hover {
+        background: #4e4e9c;
+        transform: scale(1.02);
+      }
+
+      /* FOOTER */
+      #footer {
+        text-align: center;
+        padding: 40px 0;
+      }
+
+      /* TECHNICAL SKILLS LIST */
+      .tech-list {
+        list-style-position: inside;
+        padding-left: 0;
+      }
+
+      /* SECTION GIFS & SOCIAL ICON SIZES */
+      .section-gif {
+        width: 250px;
+        height: auto;
+        margin: 10px auto;
+      }
+      .social-icon {
+        width: 90px;
+        height: auto;
+      }
+
+      /* EXTRA SPACE FOR SECTION ANCHORS */
+      section {
+        scroll-margin-top: 80px;
+      }
+
+      /* HIGHLIGHT CLASSES */
+      .highlight-red {
+        color: #ff4d4d;
+      }
+      .highlight-blue {
+        color: #4da6ff;
+      }
+      .highlight-green {
+        color: #66ff66;
+      }
+      .highlight-purple {
+        color: #b366ff;
+      }
+
+      /* MOBILE & RESPONSIVE ADJUSTMENTS */
+      @media (max-width: 768px) {
+        body {
+          background-size: auto 100%;
+          background-position: center top;
+        }
+        .header-content {
+          flex-direction: column;
+          text-align: center;
+        }
+        .profile {
+          margin-bottom: 20px;
+        }
+        .intro-text h1 {
+          font-size: 2.4em;
+        }
+        .two-col {
+          flex-direction: column;
+          text-align: center;
+        }
+        .right-align .two-col {
+          flex-direction: column;
+        }
+        /* Mobile Navigation */
+        .nav-menu {
+          flex-direction: column;
+          background: rgba(0, 0, 0, 0.9);
+          position: absolute;
+          top: 60px;
+          right: 0;
+          width: 200px;
+          display: none;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .nav-menu.active {
+          display: flex;
+        }
+        .nav-menu li {
+          padding: 10px 20px;
+        }
+        .hamburger {
+          display: flex;
+        }
+        #footer {
+          padding: 20px 0;
+          margin: 10px auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVIGATION -->
+    <nav class="navbar scroll-animation">
+      <div class="container nav-container">
+        <a href="#home" class="nav-logo">Sushovan Pan</a>
+        <!-- Hamburger for Mobile -->
+        <div class="hamburger" id="hamburger" aria-label="Open navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#portfolio">Projects</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- HEADER SECTION -->
+    <section id="home" class="header-section scroll-animation">
+      <div class="container header-content">
+        <div class="profile">
+          <div class="profile-container">
+            <img
+              src="sushovan-photo.jpg"
+              alt="Portrait of Sushovan Pan"
+              class="profile-photo"
+            />
+            <div class="profile-border"></div>
+          </div>
+        </div>
+        <div class="intro-text">
+          <h1 id="greeting">Sushovan Pan: Welcome!</h1>
+          <p class="tagline">
+            <span id="typewriter"></span>
+          </p>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/sushovan-pan-6753b920b" target="_blank"
+              >LinkedIn</a
+            >
+            <a href="https://github.com/Sushovan09" target="_blank">GitHub</a>
+            <a href="mailto:sushovanpan2003@gmail.com" target="_blank">Email</a>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-down">
+        <span>&darr;</span>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="glass-card scroll-animation right-align">
+      <div class="container">
+        <h2>About Me</h2>
+        <div class="two-col">
+          <div class="img-col">
+            <img
+              src="c.gif"
+              alt="Animated illustration representing About Me"
+              class="section-gif"
+            />
+          </div>
+          <div class="text-col">
+            <p>
+              Hi, I'm Sushovan Pan, an
+              <span class="highlight-purple">MSc Computer Science</span> student
+              at
+              <span class="highlight-blue"
+                >Ramakrishna Mission Vivekananda Educational and Research
+                Institute</span
+              >. My expertise lies in
+              <span class="highlight-green">AI/ML</span>,
+              <span class="highlight-red">full‑stack development</span>, and
+              <span class="highlight-purple">audio processing</span>.
+              I have undertaken various innovative projects—including rare bird
+              species classification, secure IVR systems, and a PDF chatbot
+              application.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="portfolio" class="glass-card scroll-animation">
+      <div class="container">
+        <h2>My Projects</h2>
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-card">
+            <img
+              src="a.webp"
+              alt="Screenshot or mockup for Rare Bird Classification project"
+            />
+            <div class="project-info">
+              <h3><span class="highlight-blue">Rare Bird Species Classification</span></h3>
+              <p>
+                Developed a system to classify bird species from audio
+                recordings using <span class="highlight-blue">React</span>,
+                <span class="highlight-red">Flask</span>, and
+                <span class="highlight-green">machine learning</span>.
+                Integrated detailed bird descriptions and images from a local
+                JSON file.
+              </p>
+              <a
+                href="https://github.com/Sushovan09/IUCN_INDIA_Red_List_Bird_Sound_Classification"
+                class="btn"
+                >Learn More</a
+              >
+            </div>
+          </div>
+          <!-- Project 2 -->
+          <div class="project-card">
+            <img
+              src="b.webp"
+              alt="Screenshot or mockup for VoiceChain IVR project"
+            />
+            <div class="project-info">
+              <h3><span class="highlight-blue">VoiceChain: Secure Automated IVR</span></h3>
+              <p>
+                Currently developing an IVR system that integrates
+                <span class="highlight-green"
+                  >LLM‑based natural language interaction</span
+                >
+                with <span class="highlight-blue">blockchain‑secured</span> call
+                records.
+              </p>
+              <a
+                href="https://github.com/Sushovan09/voiceChain"
+                class="btn"
+                >Learn More</a
+              >
+            </div>
+          </div>
+          <!-- Project 3 -->
+          <div class="project-card">
+            <img
+              src="c.webp"
+              alt="Screenshot or mockup for PDF Chatbot Application project"
+            />
+            <div class="project-info">
+              <h3><span class="highlight-blue">PDF Chatbot Application</span></h3>
+              <p>
+                Created a conversational tool for interactive PDF analysis using
+                <span class="highlight-blue">React</span>,
+                <span class="highlight-red">Flask</span>,
+                <span class="highlight-green">LangChain</span>, and
+                <span class="highlight-purple">FAISS</span>. Features include
+                source‑referenced responses and chat history management.
+              </p>
+              <a
+                href="https://github.com/Sushovan09/pdfChatBot"
+                class="btn"
+                >Learn More</a
+              >
+            </div>
+          </div>
+          <!-- More Projects -->
+          <div class="project-card more-projects">
+            <div class="project-info">
+              <h3>+ More Projects</h3>
+              <p>
+                Explore additional projects and innovative ideas coming soon.
+              </p>
+              <a href="other-projects.html" class="btn">View More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education" class="glass-card scroll-animation">
+      <div class="container">
+        <h2>Education</h2>
+        <div class="two-col">
+          <div class="img-col">
+            <img
+              src="d.gif"
+              alt="Animated illustration representing education"
+              class="section-gif"
+            />
+          </div>
+          <div class="text-col">
+            <div class="education-item">
+              <h3><span class="highlight-purple">MSc in Computer Science</span></h3>
+              <p>
+                <span class="highlight-blue"
+                  >Ramakrishna Mission Vivekananda Educational and Research
+                  Institute</span
+                >, Belur, India<br />
+                Aug 2023 – July 2025<br />
+                Current CGPA: <span class="highlight-green">6.00/10</span>
+              </p>
+            </div>
+            <div class="education-item">
+              <h3><span class="highlight-purple">BSc in Computer Science</span></h3>
+              <p>
+                <span class="highlight-blue"
+                  >Parasanta Chandra Mahalanobis Mahavidyalaya</span
+                >, Kolkata, India<br />
+                Aug 2020 – Aug 2023<br />
+                CGPA: <span class="highlight-green">9.96/10</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNICAL SKILLS SECTION -->
+    <section id="skills" class="glass-card scroll-animation right-align">
+      <div class="container">
+        <h2>Technical Skills</h2>
+        <div class="two-col">
+          <div class="img-col">
+            <img
+              src="a.gif"
+              alt="Animated illustration representing skills"
+              class="section-gif"
+            />
+          </div>
+          <div class="text-col">
+            <ul class="tech-list">
+              <li>
+                <strong>Languages:</strong>
+                <span class="highlight-red">C</span>,
+                <span class="highlight-green">C++</span>,
+                <span class="highlight-blue">Java</span>,
+                <span class="highlight-purple">Python</span>
+              </li>
+              <li>
+                <strong>Frontend:</strong>
+                <span class="highlight-blue">HTML</span>,
+                <span class="highlight-red">CSS</span>,
+                <span class="highlight-green">JavaScript</span>,
+                <span class="highlight-purple">React</span>
+              </li>
+              <li>
+                <strong>Database:</strong>
+                <span class="highlight-green">MySQL</span>
+              </li>
+              <li>
+                <strong>Frameworks:</strong>
+                <span class="highlight-blue">Flask</span>,
+                <span class="highlight-red">Streamlit</span>
+              </li>
+              <li>
+                <strong>Platforms:</strong>
+                <span class="highlight-purple">Windows</span>,
+                <span class="highlight-green">Linux</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="glass-card scroll-animation">
+      <div class="container">
+        <h2>Get in Touch</h2>
+        <div class="two-col">
+          <div class="text-col">
+            <p>
+              Connect with me via social media or send me a message directly.
+            </p>
+            <br /><br />
+            <div class="social-links">
+              <a
+                href="https://linkpop.com/sushovan39"
+                target="_blank"
+                class="btn social-btn"
+              >
+                <img
+                  src="social.gif"
+                  alt="Link to social hub"
+                  class="social-icon"
+                />
+                <span class="highlight-blue">Social Hub</span>
+              </a>
+            </div>
+          </div>
+          <div class="img-col">
+            <form
+              action="https://docs.google.com/forms/d/e/1FAIpQLSd4IbSRYe8lxONoDLncRWGEY1BYWr-OLTyBQtuD-5okkTvbzQ/formResponse"
+              method="POST"
+              target="_blank"
+              class="contact-form"
+            >
+              <input
+                type="text"
+                name="entry.2000663714"
+                placeholder="Your Name"
+                required
+              />
+              <input
+                type="email"
+                name="entry.995878073"
+                placeholder="Your Email"
+                required
+              />
+              <textarea
+                name="entry.470151249"
+                rows="5"
+                placeholder="Your Message"
+                required
+              ></textarea>
+              <button type="submit" class="btn send-mail-btn">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <section id="footer" class="glass-card scroll-animation">
+      <div class="container">
+        <a href="Sushovan-Pan-CV.pdf" download class="btn download-cv">
+          Download CV
+        </a>
+        <p>&copy; 2024 Sushovan Pan</p>
+      </div>
+    </section>
+
+    <!-- MAIN SCRIPT -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        /* SCROLL ANIMATION */
+        const scrollElements = document.querySelectorAll(".scroll-animation");
+
+        function elementInView(el, dividend = 1) {
+          const elementTop = el.getBoundingClientRect().top;
+          return (
+            elementTop <=
+            (window.innerHeight || document.documentElement.clientHeight) /
+              dividend
+          );
+        }
+
+        function displayScrollElement(element) {
+          element.classList.add("visible");
+        }
+
+        function handleScrollAnimation() {
+          scrollElements.forEach((el) => {
+            if (elementInView(el, 1.25)) {
+              displayScrollElement(el);
+            }
+          });
+        }
+
+        window.addEventListener("scroll", handleScrollAnimation);
+        handleScrollAnimation(); // Trigger on load
+
+        /* TYPEWRITER / ROTATING TAGLINES */
+        const typewriter = document.getElementById("typewriter");
+        const taglineTexts = [
+          "AI & ML Developer",
+          "Full Stack Engineer",
+          "Blockchain Enthusiast",
+          "Open Source Contributor"
+        ];
+        let taglineIndex = 0;
+
+        function updateTagline() {
+          typewriter.innerText = taglineTexts[taglineIndex];
+          taglineIndex = (taglineIndex + 1) % taglineTexts.length;
+        }
+        // Update once and then every 2s
+        updateTagline();
+        setInterval(updateTagline, 2000);
+
+        /* DYNAMIC BACKGROUND & GREETING BASED ON TIME */
+        const headerSection = document.querySelector(".header-section");
+        const profilePhoto  = document.querySelector(".profile-photo");
+        const greeting      = document.getElementById("greeting");
+
+        function updateTimeEffects() {
+          const now = new Date();
+          const hour = now.getHours();
+
+          if (hour >= 6 && hour < 12) {
+            // Morning
+            headerSection.style.background =
+              "linear-gradient(120deg, rgba(255, 154, 158, 0.1), rgba(250, 208, 196, 0.1))";
+            greeting.innerText = "Sushovan Pan: Good morning!";
+          } else if (hour >= 12 && hour < 18) {
+            // Afternoon
+            headerSection.style.background =
+              "linear-gradient(120deg, rgba(251, 194, 235, 0.1), rgba(166, 193, 238, 0.1))";
+            greeting.innerText = "Sushovan Pan: Good afternoon!";
+          } else if (hour >= 18 && hour < 21) {
+            // Evening
+            headerSection.style.background =
+              "linear-gradient(120deg, rgba(161, 140, 209, 0.1), rgba(251, 194, 235, 0.1))";
+            greeting.innerText = "Sushovan Pan: Good evening!";
+          } else {
+            // Late night
+            headerSection.style.background =
+              "linear-gradient(120deg, rgba(0, 4, 40, 0.1), rgba(0, 78, 146, 0.1))";
+            greeting.innerText = "Sushovan Pan: Welcome!";
+          }
+
+          // Profile Picture Border Glow
+          const colors = ["#ff4757", "#1e90ff", "#2ed573", "#f39c12", "#9b59b6"];
+          const randomColor = colors[Math.floor(Math.random() * colors.length)];
+          profilePhoto.style.boxShadow = `0px 0px 20px ${randomColor}`;
+        }
+
+        // Call on page load and every 10s
+        updateTimeEffects();
+        setInterval(updateTimeEffects, 10000);
+
+        /* HAMBURGER MENU TOGGLE */
+        const hamburger = document.getElementById("hamburger");
+        const navMenu = document.getElementById("nav-menu");
+
+        hamburger.addEventListener("click", function () {
+          navMenu.classList.toggle("active");
+        });
+
+        /* OPTIONAL: HIDE NAV MENU ON LINK CLICK (MOBILE) */
+        document.querySelectorAll(".nav-menu li a").forEach((link) => {
+          link.addEventListener("click", function () {
+            if (navMenu.classList.contains("active")) {
+              navMenu.classList.remove("active");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
+
