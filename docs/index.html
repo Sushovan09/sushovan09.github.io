@@ -72,11 +72,11 @@
     </div>
   </div>
 
-  <iframe id="preload-iframe" src="more_design2/portfolio.html" style="display: none;"></iframe>
+  <iframe id="preload-iframe" src="portfolio.html" style="display: none;"></iframe>
 
   <script>
     if (sessionStorage.getItem("visited")) {
-      window.location.replace("more_design2/portfolio.html");
+      window.location.replace("portfolio.html");
     } else {
       sessionStorage.setItem("visited", true);
       
@@ -92,7 +92,7 @@
           const remainingTime = Math.max(0, minDelay - elapsedTime);
           
           setTimeout(() => {
-            window.location.replace("more_design2/portfolio.html");
+            window.location.replace("portfolio.html");
           }, remainingTime);
         }
       }
