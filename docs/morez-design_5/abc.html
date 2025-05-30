@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sushovan Pan | Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
+
+    <!-- Feather Icons -->
+    <script defer src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+      :root {
+        /* Light mode */
+        --clr-bg: #ffffff;
+        --clr-card: rgba(255, 255, 255, 0.55);
+        --clr-nav: rgba(255, 255, 255, 0.9);
+        --clr-text: #1a1a1a;
+        --clr-muted: #f5f5f5;
+        --clr-accent: #6c63ff;
+        --radius: 12px;
+        --transition: 0.25s ease;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          /* Dark mode */
+          --clr-bg: #101010;
+          --clr-card: rgba(255, 255, 255, 0.08);
+          --clr-nav: rgba(0, 0, 0, 0.8);
+          --clr-text: #e6e6e6;
+          --clr-muted: #1c1c1c;
+          --clr-accent: #6c63ff;
+        }
+      }
+
+      /* ---------- Base ---------- */
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: var(--clr-bg);
+        color: var(--clr-text);
+        line-height: 1.65;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      img { max-width: 100%; display: block; }
+      a { color: var(--clr-accent); text-decoration: none; transition: color var(--transition); }
+      a:hover { color: darken(var(--clr-accent), 10%); }
+      .container { width: 90%; max-width: 1100px; margin-inline: auto; }
+
+      /* ---------- Navigation ---------- */
+      .nav { position: sticky; top: 0; width: 100%; backdrop-filter: blur(12px); background: var(--clr-nav); border-bottom: 1px solid rgba(0,0,0,0.06); z-index: 100; }
+      .nav__inner { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; }
+      .nav__brand { font-family: 'Fira Code', monospace; font-size: 1.2rem; color: var(--clr-accent); }
+      .nav__menu { display: flex; gap: 1.2rem; }
+      .nav__menu a { font-family: 'Fira Code', monospace; font-size: 0.95rem; }
+      .nav__toggle { display: none; background: none; border: none; cursor: pointer; color: var(--clr-text); }
+
+      /* ---------- Glass card utility ---------- */
+      .card-glass {
+        background: var(--clr-card);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: var(--radius);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      }
+
+      /* ---------- Hero ---------- */
+      .hero { text-align: center; padding: 5rem 0 4rem; position: relative; overflow: hidden; }
+      .hero__img { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin-inline: auto; border: 4px solid var(--clr-accent); box-shadow: 0 0 20px rgba(0,0,0,0.15); }
+      .hero__title { font-family: 'Fira Code', monospace; font-size: 2.2rem; margin-top: 1rem; }
+      .hero__tagline { margin: 0.6rem 0 1.6rem; font-size: 1.1rem; min-height: 1.2rem; color: var(--clr-text); opacity: 0.9; }
+      .hero__links { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.75rem; }
+
+      /* ---------- Sections ---------- */
+      section { padding: 3.5rem 0; }
+      .section--alt { background: var(--clr-muted); }
+      .section__title { font-family: 'Fira Code', monospace; font-size: 1.7rem; margin-bottom: 1.4rem; text-align: center; }
+      .section__text { max-width: 700px; margin-inline: auto; margin-bottom: 1.7rem; text-align: center; }
+
+      /* ---------- Grid & Project Card ---------- */
+      .grid { display: grid; gap: 1.6rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+      .card { padding: 1.6rem; transition: transform var(--transition), box-shadow var(--transition); }
+      .card:hover { transform: translateY(-6px); box-shadow: 0 8px 18px rgba(0,0,0,0.08); }
+      .card__title { font-size: 1.15rem; margin-bottom: 0.5rem; }
+      .card__text { font-size: 0.96rem; margin-bottom: 0.8rem; opacity: 0.9; }
+      .card__link { font-size: 0.9rem; font-family: 'Fira Code', monospace; }
+
+      /* ---------- Lists / tags ---------- */
+      .list { list-style: disc inside; display: grid; gap: 0.55rem; max-width: 600px; margin-inline: auto; }
+      .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 0.55rem; justify-content: center; }
+      .tags li { padding: 0.45rem 0.9rem; background: var(--clr-muted); border-radius: var(--radius); font-size: 0.85rem; }
+
+      /* ---------- Form ---------- */
+      .form { display: grid; gap: 1rem; max-width: 500px; margin-inline: auto; }
+      .form input,
+      .form textarea { width: 100%; padding: 0.8rem; border-radius: var(--radius); border: 1px solid #ddd; font-size: 0.95rem; }
+      .form button { justify-self: start; }
+
+      /* ---------- Buttons ---------- */
+      .btn { display: inline-block; padding: 0.65rem 1.3rem; border-radius: var(--radius); font-size: 0.9rem; font-family: 'Fira Code', monospace; border: 1px solid var(--clr-accent); transition: background var(--transition), color var(--transition); }
+      .btn--light { background: transparent; color: var(--clr-accent); }
+      .btn--light:hover { background: var(--clr-accent); color: #fff; }
+      .btn--dark { background: var(--clr-accent); color: #fff; }
+      .btn--dark:hover { opacity: 0.85; }
+
+      /* ---------- Footer ---------- */
+      .footer { border-top: 1px solid rgba(0,0,0,0.06); padding: 2rem 0; font-size: 0.85rem; text-align: center; margin-top: auto; }
+      .footer__inner { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+
+      /* ---------- Scroll reveal ---------- */
+      .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+      .reveal.visible { opacity: 1; transform: translateY(0); }
+
+      /* ---------- Responsive ---------- */
+      @media (max-width: 768px) {
+        .nav__toggle { display: block; }
+        .nav__menu { position: fixed; inset: 0 0 0 auto; width: 70%; max-width: 260px; background: var(--clr-bg); flex-direction: column; align-items: center; padding-top: 5rem; gap: 2rem; border-left: 1px solid rgba(0,0,0,0.06); transform: translateX(100%); transition: transform var(--transition); }
+        .nav__menu.open { transform: translateX(0); }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========== NAVBAR ========== -->
+    <header class="nav reveal">
+      <div class="container nav__inner">
+        <a href="#home" class="nav__brand">Sushovan&nbsp;Pan</a>
+        <nav class="nav__menu" id="nav-menu">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#education">Education</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button class="nav__toggle" id="nav-toggle" aria-label="Open menu"><i data-feather="menu"></i></button>
+      </div>
+    </header>
+
+    <!-- ========== HERO ========== -->
+    <section id="home" class="hero reveal">
+      <div class="container">
+        <img src="sushovan-photo.jpg" alt="Sushovan Pan" class="hero__img" />
+        <h1 class="hero__title">Hi, I'm&nbsp;Sushovan&nbsp;Pan</h1>
+        <p id="tagline" class="hero__tagline"></p>
+        <div class="hero__links">
+          <a href="https://linkedin.com/in/sushovan-pan-6753b920b" target="_blank" rel="noopener" class="btn btn--light">LinkedIn</a>
+          <a href="https://github.com/Sushovan09" target="_blank" rel="noopener" class="btn btn--light">GitHub</a>
+          <a href="mailto:sushovanpan2003@gmail.com" class="btn btn--dark">Email&nbsp;Me</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section id="about" class="section section--alt reveal card-glass">
+      <div class="container">
+        <h2 class="section__title">About&nbsp;Me</h2>
+        <p class="section__text">I'm an MSc Computer Science student at RKMV‑ERI passionate about AI/ML, full‑stack engineering, and audio/image processing. Outside work I enjoy anime and Indian classical music.</p>
+      </div>
+    </section>
+
+    <!-- ========== PROJECTS ========== -->
+    <section id="projects" class="section reveal">
+      <div class="container">
+        <h2 class="section__title">Projects</h2>
+        <div class="grid">
+          <article class="card card-glass">
+            <h3 class="card__title">Rare Bird Species Classification</h3>
+            <p class="card__text">End‑to‑end ML pipeline that identifies endangered Indian birds from audio recordings (&gt;92% accuracy).</p>
+            <a href="https://github.com/Sushovan09/IUCN_INDIA_Red_List_Bird_Sound_Classification" class="card__link" target="_blank" rel="noopener">GitHub ↗</a>
+          </article>
+          <article class="card card-glass">
+            <h3 class="card__title">VoiceChain IVR</h3>
+            <p class="card__text">LLM‑powered IVR with blockchain‑verified call logs.</p>
+            <a href="https://github.com/Sushovan09/voiceChain" class="card__link" target="_blank" rel="noopener">GitHub ↗</a>
+          </article>
+          <article class="card card-glass">
+            <h3 class="card__title">PDF Chatbot</h3>
+            <p class="card__text">Conversational interface for PDFs using LangChain + FAISS.</p>
+            <a href="https://github.com/Sushovan09/pdfChatBot" class="card__link" target="_blank" rel="noopener">GitHub ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== EDUCATION ========== -->
+    <section id="education" class="section section--alt reveal card-glass">
+      <div class="container">
+        <h2 class="section__title">Education</h2>
+        <ul class="list">
+          <li>MSc Computer Science — RKMV‑ERI (2023‑2025) — CGPA 6.00/10</li>
+          <li>BSc Computer Science — PCM Mahavidyalaya (2020‑2023) — CGPA 9.96/10</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== SKILLS ========== -->
+    <section id="skills" class="section reveal">
+      <div class="container">
+        <h2 class="section__title">Skills</h2>
+        <ul class="tags">
+          <li>Python</li><li>C++</li><li>React</li><li>Flask</li><li>MySQL</li><li>Docker</li><li>TensorFlow</li><li>PyTorch</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section id="contact" class="section section--alt reveal card-glass">
+      <div class="container">
+        <h2 class="section__title">Contact</h2>
+        <p class="section__text">Drop a message via email or the form below; I’ll respond within 48 hours.</p>
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSd4IbSRYe8lxONoDLncRWGEY1BYWr-OLTyBQtuD-5okkTvbzQ/formResponse" method="POST" class="form">
+          <input type="text" name="entry.2000663714" placeholder="Name" required />
+          <input type="email" name="entry.995878073" placeholder="Email" required />
+          <textarea name="entry.470151249" rows="5" placeholder="Message" required></textarea>
+          <button type="submit" class="btn btn--dark">Send</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer reveal">
+      <div class="container footer__inner">
+        <small>© 2025 Sushovan Pan</small>
+        <a href="Sushovan-Pan-CV.pdf" download class="btn btn--light btn--sm">Download CV</a>
+      </div>
+    </footer>
+
+    <script>
+      feather.replace();
+
+      // Mobile nav
+      const navToggle = document.getElementById('nav-toggle');
+      const navMenu   = document.getElementById('nav-menu');
+      navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+      });
+
+      // Rotating tagline
+      const tagEl = document.getElementById('tagline');
+      const tags = ['AI/ML Developer', 'Full‑Stack Engineer', 'Open‑Source Contributor'];
+      let idx = 0;
+      function rotateTag() {
+        tagEl.textContent = tags[idx];
+        idx = (idx + 1) % tags.length;
+      }
+      rotateTag();
+      setInterval(rotateTag, 3000);
+
+      // Scroll reveal
+      const revealEls = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      revealEls.forEach(el => observer.observe(el));
+    </script>
+  </body>
+</html>
