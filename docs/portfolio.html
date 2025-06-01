@@ -11,6 +11,123 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="portfolio.css" />
+    
+    <style>
+      /* Base Styles */
+      .header-section {
+        transition: background 1s ease-in-out;
+        padding: 50px 0;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.1); /* Default transparent background */
+        color: #fff;
+        min-height: 100vh;
+      }
+      
+      .container.header-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .profile-container {
+        position: relative;
+        margin-bottom: 20px;
+      }
+
+      .profile-photo {
+        width: 175px;
+        height: 175px;
+        border-radius: 50%;
+        transition: box-shadow 0.5s ease-in-out;
+      }
+
+      .profile-border {
+        /* If you want a decorative ring around the photo */
+        position: absolute;
+        border: 2px solid transparent;
+        width: 160px;
+        height: 160px;
+        top: -5px;
+        left: -5px;
+        border-radius: 50%;
+      }
+
+      .intro-text {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      #greeting {
+        font-size: 2em;
+        margin-bottom: 10px;
+      }
+
+      .tagline {
+        font-size: 1.2em;
+        color: goldenrod;
+        font-weight: bold;
+        margin-bottom: 10px;
+        height: 30px; /* Just enough to hold one line of text */
+        overflow: hidden;
+      }
+
+      .social-links a {
+        font-size: .9em;
+        margin: 10px;
+        color: #09f;
+        text-decoration: none;
+        border-bottom: 1px dashed transparent;
+      }
+
+      .social-links a:hover {
+        border-bottom: 1px dashed #fff;
+      }
+
+      .scroll-down {
+        margin-top: 30px;
+        font-size: 2em;
+      }
+
+      #typewriter::after {
+        content: '|';
+        animation: blink 1s infinite;
+      }
+      
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+
+      /* Responsive Adjustments for Smaller Screens */
+      @media (max-width: 600px) {
+        .header-section {
+          padding: 30px 0;
+        }
+        
+        #greeting {
+          font-size: 1.5em;
+        }
+        
+        .tagline {
+          font-size: 1.0em;
+          margin-bottom: 10px;
+        }
+        
+        .profile-photo {
+          width: 150px;
+          height: 150px;
+        }
+        
+        .profile-border {
+          width: 110px;
+          height: 110px;
+          top: -5px;
+          left: -5px;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- Navigation -->
@@ -62,190 +179,6 @@
     <span>&darr;</span>
   </div>
 </section>
-
-<style>
-  /* Base Styles */
-  .header-section {
-    transition: background 1s ease-in-out;
-    padding: 50px 0;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.1); /* Default transparent background */
-    color: #fff;
-  }
-  
-  .container.header-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .profile-container {
-    position: relative;
-    margin-bottom: 20px;
-  }
-
-  .profile-photo {
-    width: 175px;
-    height: 175px;
-    border-radius: 50%;
-    transition: box-shadow 0.5s ease-in-out;
-  }
-
-  .profile-border {
-    /* If you want a decorative ring around the photo */
-    position: absolute;
-    border: 2px solid transparent;
-    width: 160px;
-    height: 160px;
-    top: -5px;
-    left: -5px;
-    border-radius: 50%;
-  }
-
-  .intro-text {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0 15px;
-  }
-
-  #greeting {
-    font-size: 2em;
-    margin-bottom: 10px;
-  }
-
-  .tagline {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 15px;
-    height: 30px; /* Just enough to hold one line of text */
-    overflow: hidden;
-  }
-
-  .social-links a {
-    margin: 10px;
-    color: #09f;
-    text-decoration: none;
-    border-bottom: 1px dashed transparent;
-  }
-
-  .social-links a:hover {
-    border-bottom: 1px dashed #fff;
-  }
-
-  .scroll-down {
-    margin-top: 30px;
-    font-size: 2em;
-  }
-
-  /* Responsive Adjustments for Smaller Screens */
-  @media (max-width: 600px) {
-    .header-section {
-      padding: 30px 0;
-    }
-    
-    #greeting {
-      font-size: 1.5em;
-    }
-    
-    .tagline {
-      font-size: 1.0em;
-      margin-bottom: 10px;
-    }
-    
-    .profile-photo {
-      width: 150px;
-      height: 150px;
-    }
-    
-    .profile-border {
-      width: 110px;
-      height: 110px;
-      top: -5px;
-      left: -5px;
-    }
-    
-    /*    .social-links {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .social-links a {
-      margin: 5px 0;
-    } */
-    
-  }
-</style>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const headerSection = document.querySelector(".header-section");
-    const profilePhoto  = document.querySelector(".profile-photo");
-    const greeting      = document.getElementById("greeting");
-    const typewriter    = document.getElementById("typewriter");
-
-    // Taglines for typewriter
-    const taglineTexts = [
-      "AI & ML Developer",
-      "Full Stack Engineer",
-      "Blockchain Enthusiast",
-      "Open Source Contributor"
-    ];
-    let taglineIndex = 0;
-
-    // Typewriter effect - update every 2s
-    function typeEffect() {
-      typewriter.innerText = taglineTexts[taglineIndex];
-      taglineIndex = (taglineIndex + 1) % taglineTexts.length;
-    }
-    // Initialize once and repeat
-    typeEffect();
-    setInterval(typeEffect, 2000);
-
-    // Update background & greeting every 10s
-    function updateTimeEffects() {
-      const now = new Date();
-      const hour = now.getHours();
-
-      // Background & Greeting
-      if (hour >= 6 && hour < 12) {
-        // Morning
-        headerSection.style.background = 
-          "linear-gradient(120deg, rgba(255, 154, 158, 0.1), rgba(250, 208, 196, 0.1))";
-        greeting.innerText = "Sushovan Pan: Good morning!";
-      } else if (hour >= 12 && hour < 18) {
-        // Afternoon
-        headerSection.style.background = 
-          "linear-gradient(120deg, rgba(251, 194, 235, 0.1), rgba(166, 193, 238, 0.1))";
-        greeting.innerText = "Sushovan Pan: Good afternoon!";
-      } else if (hour >= 18 && hour < 21) {
-        // Evening
-        headerSection.style.background = 
-          "linear-gradient(120deg, rgba(161, 140, 209, 0.1), rgba(251, 194, 235, 0.1))";
-        greeting.innerText = "Sushovan Pan: Good evening!";
-      } else {
-        // Late night
-        headerSection.style.background = 
-          "linear-gradient(120deg, rgba(0, 4, 40, 0.1), rgba(0, 78, 146, 0.1))";
-        greeting.innerText = "Sushovan Pan: Welcome!";
-      }
-
-      // Profile Picture Border Glow
-      const colors = ["#ff4757", "#1e90ff", "#2ed573", "#f39c12", "#9b59b6"];
-      const randomColor = colors[Math.floor(Math.random() * colors.length)];
-      profilePhoto.style.boxShadow = `0px 0px 20px ${randomColor}`;
-    }
-
-    // Call on page load and every 10s
-    updateTimeEffects();
-    setInterval(updateTimeEffects, 10000);
-  });
-</script>
-
-    
-    
-    
 
     <!-- About Section -->
     <section id="about" class="glass-card scroll-animation right-align">
@@ -481,7 +414,131 @@
       </div>
     </section>
 
+    <!-- Typewriter Script -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const headerSection = document.querySelector(".header-section");
+      const profilePhoto  = document.querySelector(".profile-photo");
+      const greeting      = document.getElementById("greeting");
+      const typewriter    = document.getElementById("typewriter");
+
+      const taglineTexts = [
+        "<< AI & ML Developer >>",
+        "<< Full Stack Engineer >>",
+        "<< Blockchain Enthusiast >>",
+        "<< Open Source Contributor >>"
+      ];
+
+      let currentIndex = 0;
+      let isRunning = false;
+
+      // Delay utility
+      const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+      // Type text character by character
+      async function typeText(text) {
+        if (!text || !typewriter) return;
+        
+        for (let i = 0; i <= text.length; i++) {
+          if (!isRunning) return;
+          typewriter.textContent = text.slice(0, i);
+          await delay(100);
+        }
+      }
+
+      // Delete text character by character
+      async function deleteText(text) {
+        if (!text || !typewriter) return;
+        
+        for (let i = text.length; i >= 0; i--) {
+          if (!isRunning) return;
+          typewriter.textContent = text.slice(0, i);
+          await delay(50);
+        }
+      }
+
+      // Main typing loop
+      async function startTypingLoop() {
+        if (!typewriter) {
+          console.error('Typewriter element not found');
+          return;
+        }
+        
+        isRunning = true;
+        await delay(1000); // Initial delay
+        
+        while (isRunning) {
+          try {
+            const text = taglineTexts[currentIndex];
+            
+            // Type the text
+            await typeText(text);
+            if (!isRunning) break;
+            
+            // Pause after typing
+            await delay(1500);
+            if (!isRunning) break;
+            
+            // Delete the text
+            await deleteText(text);
+            if (!isRunning) break;
+            
+            // Short pause before next text
+            await delay(300);
+            
+            // Move to next text
+            currentIndex = (currentIndex + 1) % taglineTexts.length;
+            
+          } catch (error) {
+            console.error('Error in typing loop:', error);
+            break;
+          }
+        }
+      }
+
+      // Start the typewriter
+      startTypingLoop();
+
+      // Update background & greeting every 10s
+      function updateTimeEffects() {
+        const now = new Date();
+        const hour = now.getHours();
+
+        // Background & Greeting
+        if (hour >= 6 && hour < 12) {
+          // Morning
+          headerSection.style.background = 
+            "linear-gradient(120deg, rgba(255, 154, 158, 0.1), rgba(250, 208, 196, 0.1))";
+          greeting.innerText = "Sushovan Pan: Good morning!";
+        } else if (hour >= 12 && hour < 18) {
+          // Afternoon
+          headerSection.style.background = 
+            "linear-gradient(120deg, rgba(251, 194, 235, 0.1), rgba(166, 193, 238, 0.1))";
+          greeting.innerText = "Sushovan Pan: Good afternoon!";
+        } else if (hour >= 18 && hour < 21) {
+          // Evening
+          headerSection.style.background = 
+            "linear-gradient(120deg, rgba(161, 140, 209, 0.1), rgba(251, 194, 235, 0.1))";
+          greeting.innerText = "Sushovan Pan: Good evening!";
+        } else {
+          // Late night
+          headerSection.style.background = 
+            "linear-gradient(120deg, rgba(0, 4, 40, 0.1), rgba(0, 78, 146, 0.1))";
+          greeting.innerText = "Sushovan Pan: Welcome!";
+        }
+
+        // Profile Picture Border Glow
+        const colors = ["#ff4757", "#1e90ff", "#2ed573", "#f39c12", "#9b59b6"];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        profilePhoto.style.boxShadow = `0px 0px 20px ${randomColor}`;
+      }
+
+      // Call on page load and every 10s
+      updateTimeEffects();
+      setInterval(updateTimeEffects, 10000);
+    });
+    </script>
+
     <script src="portfolio.js"></script>
   </body>
 </html>
-

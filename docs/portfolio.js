@@ -25,20 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Trigger animation on load for elements already in view
   handleScrollAnimation();
 
-  // Typewriter Effect for the Tagline
-  const typewriterElement = document.getElementById("typewriter");
-  const text = "AI/ML Enthusiast | Full-Stack Developer | Open-Source Advocate";
-  let index = 0;
-  const speed = 100; // milliseconds between characters
 
-  function typeWriter() {
-    if (index < text.length) {
-      typewriterElement.innerHTML += text.charAt(index);
-      index++;
-      setTimeout(typeWriter, speed);
-    }
-  }
-  typeWriter();
 
   // Hamburger Menu Toggle for Mobile
   const hamburger = document.getElementById("hamburger");
